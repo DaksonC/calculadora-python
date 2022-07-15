@@ -4,17 +4,18 @@ from typing import List
 def make_root() -> tk.Tk:
     root = tk.Tk()
     root.title('Calculadora')
-    root.config(padx=10, pady=10, background='#fff')
+    root.config(padx=10, pady=10, background='#d5d5d5')
     root.resizable(False, False)
     return root
 
 def make_label(root) -> tk.Label:
     label = tk.Label(
         root, 
+        fg='#fff',
         text='Sem conta anida',
         anchor='e',
         justify='right',
-        background='#777'
+        background='#d5d5d5'
     )
     label.grid(row=0, column=0, columnspan=5, sticky='news')
     return label
@@ -22,18 +23,11 @@ def make_label(root) -> tk.Label:
 def make_display(root) -> tk.Entry:
     display = tk.Entry(root)
     display.grid(row=1, column=0, columnspan=5, sticky='news', pady=(0, 10))
-    display.config(
-        font=('Helvetica', 40, 'bold'),
-        justify='right', 
-        bg=1, 
-        relief='flat',
-        highlightthickness=1, 
-        highlightcolor='#000'
-    )
-    display.bind('<Control-a>', display_control_a)
+    display.config(font=('Helvetica', 40, 'bold'), justify='right', bd=1, relief='flat',highlightthickness=0, highlightcolor='#c9c9c9',)
+    display.bind('<Control-a>', _display_control_a)
     return display
     
-def display_control_a(event):
+def _display_control_a(event):
     event.widget.select_range(0, 'end')
     event.widget.icursor('end')
     return 'break'
@@ -56,13 +50,14 @@ def make_buttons(root) -> List[List[tk.Button]]:
                 font=('Helvetica', 15, 'normal'),
                 pady=40,
                 width=1,
-                background='#f3f2f9',
+                background='#c7c7c7',
                 bd=0,
                 cursor='hand2',
                 highlightthickness=0,
-                highlightcolor='#ccc',
-                highlightbackground='#ccc',
-                activebackground='#ccc'
+                highlightcolor='#808080',
+                highlightbackground='#808080',
+                activebackground='#808080',
+
            )
            button_row.append(btn)
         buttons.append(button_row)

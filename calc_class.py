@@ -1,7 +1,9 @@
+from re import S
 import tkinter as tk
 from typing import List
 
 class Calculator:
+    
     def __init__(
         self, 
         root: tk.Tk, 
@@ -13,4 +15,6 @@ class Calculator:
         self.label = label
         self.display = display
         self.buttons = buttons
-       
+
+    def start(self):  
+        self.root.mainloop() 
